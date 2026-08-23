@@ -57,13 +57,18 @@ export default function Navbar() {
           </Link>
 
           <div style={{ position: 'relative' }} ref={menuRef}>
-            <button className="nav-avatar" onClick={() => setMenuOpen(!menuOpen)}>
-              {user.name?.charAt(0).toUpperCase()}
+            <button className="nav-avatar" onClick={() => setMenuOpen(!menuOpen)} style={{ overflow: 'hidden', padding: 0 }}>
+              {user.profilePicUrl ? (
+                <img src={user.profilePicUrl} alt={user.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              ) : (
+                user.name?.charAt(0).toUpperCase()
+              )}
             </button>
             {menuOpen && (
               <div className="nav-menu">
                 <Link to="/my-skills" onClick={() => setMenuOpen(false)}>My Skills</Link>
                 <Link to={`/profile/${user._id}`} onClick={() => setMenuOpen(false)}>My Profile</Link>
+                <Link to="/manage-profile" onClick={() => setMenuOpen(false)}>Manage Profile</Link>
                 {user.role === 'admin' && <Link to="/admin" onClick={() => setMenuOpen(false)}>Admin Dashboard</Link>}
                 <button onClick={handleLogout}>Log out</button>
               </div>

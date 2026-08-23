@@ -18,6 +18,7 @@ import Admin from './pages/Admin';
 import Terms from './pages/Terms';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
+import ManageProfile from './pages/ManageProfile';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/explore" element={<ProtectedRoute><Explore /></ProtectedRoute>} />
           <Route path="/matches" element={<ProtectedRoute><SmartMatch /></ProtectedRoute>} />
           <Route path="/profile/:id" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          <Route path="/manage-profile" element={<ProtectedRoute><ManageProfile /></ProtectedRoute>} />
           <Route path="/my-swaps" element={<ProtectedRoute><MySwaps /></ProtectedRoute>} />
           <Route path="/chat/:swapId" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
           <Route path="/notifications" element={<ProtectedRoute><Notifications /></ProtectedRoute>} />

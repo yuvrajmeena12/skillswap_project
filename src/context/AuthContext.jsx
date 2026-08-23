@@ -35,8 +35,20 @@ export const AuthProvider = ({ children }) => {
     setUser(null);
   };
 
+  // Merges new fields (e.g. after editing bio, or uploading a profile
+  // picture) into the current user object, in both React state and
+  // localStorage, so the navbar avatar and other places update immediately
+  // without needing a full page refresh or re-login.
+  const updateUserLocal = (updates) => {
+    setUser((prev) => {
+      const next = { ...prev, ...updates };
+      localStorage.setItem('user', JSON.stringify(next));
+      return next;
+    });
+  };
+
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, loading }}>
+    <AuthContext.Provider value={{ user, login, register, logout, loading, updateUserLocal }}>
       {children}
     </AuthContext.Provider>
   );

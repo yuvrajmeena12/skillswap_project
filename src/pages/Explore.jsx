@@ -34,12 +34,13 @@ export default function Explore() {
       </div>
 
       <div className="grid">
-        {skills.map((skill) => (
-          <SkillCard
-            key={skill._id}
-            skill={skill}
-            actions={<button className="btn btn-sm" onClick={() => setSelectedSkill(skill)}>Request Swap</button>}
-          />
+        {skills.map((skill, i) => (
+          <div key={skill._id} className="stagger-item" style={{ '--stagger-index': i }}>
+            <SkillCard
+              skill={skill}
+              actions={<button className="btn btn-sm" onClick={() => setSelectedSkill(skill)}>Request Swap</button>}
+            />
+          </div>
         ))}
       </div>
       {skills.length === 0 && <p style={{ color: 'var(--ink-muted)' }}>No skills match your search.</p>}

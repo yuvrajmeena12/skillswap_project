@@ -137,8 +137,8 @@ export default function MySkills() {
     </div>
   );
 
-  const renderSkillCard = (skill, showCert) => (
-    <div key={skill._id} className="ticket">
+  const renderSkillCard = (skill, showCert, index) => (
+    <div key={skill._id} className="ticket stagger-item" style={{ '--stagger-index': index }}>
       <div className="ticket-eyebrow">{CATEGORY_ICON[skill.category]} {skill.category} · {skill.level} · {skill.mode}</div>
       <div className="ticket-title" style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
         {skill.title}
@@ -185,7 +185,7 @@ export default function MySkills() {
               <p style={{ fontSize: 13 }}>Add a skill you're comfortable teaching.</p>
             </div>
           )}
-          {teach.map((skill) => renderSkillCard(skill, true))}
+          {teach.map((skill, i) => renderSkillCard(skill, true, i))}
         </div>
 
         <div>
@@ -202,7 +202,7 @@ export default function MySkills() {
               <p style={{ fontSize: 13 }}>Add a skill you'd like someone to teach you.</p>
             </div>
           )}
-          {want.map((skill) => renderSkillCard(skill, false))}
+          {want.map((skill, i) => renderSkillCard(skill, false, i))}
         </div>
       </div>
 
